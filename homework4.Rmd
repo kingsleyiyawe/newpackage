@@ -1,0 +1,49 @@
+---
+title: "hwk4"
+author: "Kingsley Iyawe"
+date: "2/26/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+
+function1 <- function(x1, x2, x3, x4, x5, x6, x7, x8, n1, n2, n3, n4){
+
+  set.seed(x1)
+  norm <- rnorm(n1, x2, x3)
+  t_dist <- rt(n2, x4)
+  f_dist <- rf(n3, x5, x6)
+  binom <- rbinom(n4, x7, x8)
+  c(norm, t_dist, f_dist, binom)
+
+}
+
+
+```
+
+
+```{r}
+library(ggplot2)
+library(stringr)
+function2 <- function(x1, x2, x3, x4, x5, x6, x7, x8, n1, n2, n3, n4) {
+  set.seed(x1)
+  norm <- rnorm(n1, x2, x3)
+  histogram1 <- hist(norm, breaks=50, col = 'red', xlim=c(-40,40), ylim=c(0,1000))
+
+  y_rt <- rt(n2, x4)
+  histogram2 <- hist(y_rt, breaks=50, col = 'blue', xlim=c(-3,3), ylim=c(0,200))
+
+  y_rf <- rf(n3, x5, x6)
+  histogram3 <- hist(y_rf, breaks=50, col = 'green',xlim=c(0,8), ylim=c(0,80))
+
+  binom <- rbinom(n4, x7, x8)
+  histogram4 <- hist(binom, breaks=30, col = 'orange', xlim=c(10, 50), ylim=c(0,200))
+  c(histogram1, histogram2, histogram3, histogram4)
+}
+
+```
